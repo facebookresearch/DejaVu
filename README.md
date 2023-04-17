@@ -1,5 +1,7 @@
 # Do SSL Models Have Déjà Vu? A Case of Unintended Memorization in Self-supervised Learning
 
+![DejaVuMainFigure](images/FigureDejaVuGithub.png)
+
 ## Dejavu experiments user manual
 
 Here is a rough guide to generating the paper figures 
