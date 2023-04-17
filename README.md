@@ -110,24 +110,3 @@ NOTE: use the RCDM environment!
 RCDM model training should all be run from the SSL_reconstruction/dejavu_utils/RCDM directory. There you find a set of shell scripts to kick off RCDM training for VICReg, SimCLR, and Supervised. The SSL model RCDMs have separate shell scripts for models A and B. For the 128 RCDMs, I generally found that training them for 600000 iterations is suitable (about one week, will automatically requeue on the cluster, just keep track of the model{ITERATIONS}.pt checkpoints to see what iteration you are on). 
 
 If you'd like to change the ImageNet dataset, just change the --data_dir flag in the shell launch script. 
-
-## Using stored models/files in AWS S3
-
-All SSL checkpoints (rn101 and rn50) are saved in an internal AWS S3 bucket: 
-```
-s3://fairusersglobal/users/AROAZVFNDK3MPX5WVK24S:caseymeehan/h1/checkpoint/caseymeehan/experiments/
-```
-Under experiments/ you'll find ssl_sweep/ and rcdm_2/ directories (don't read into the '2' in rcdm it's vestigial). The ssl_sweep directory contains both SSL and supervised model checkpoints in the same directory structure seen in the .sh scripts for trianing SSL models, running attacks, and running linear probe tests. All attack and linear probe data is in the ssl_sweep directory. The file naming convention uses 'XXXpc' for training set size (read as XXX examples 'Per Class') and 'XXXep' for number of epochs. So, for instance, attack data for vicreg trained on 300k images at 1000 epochs is in 
-```
-s3://fairusersglobal/users/AROAZVFNDK3MPX5WVK24S:caseymeehan/h1/checkpoint/caseymeehan/experiments/ssl_sweep/vicreg/attack_sweeps/NN_attk_vicreg_300pc_1000ep/
-```
-and the model checkpoint for the resnet50 SimCLR at 250 epochs with 200k training set size on set $A$ is 
-```
-s3://fairusersglobal/users/AROAZVFNDK3MPX5WVK24S:caseymeehan/h1/checkpoint/caseymeehan/experiments/ssl_sweep/simclr_rn50/simclr_dssweep_200pc_A/model_ep250.pth
-```
-The same goes for all linear probe tests as well as corner crop and backbone attack data. 
-
-The RCDM checkpoint for VICReg $A$ (all RCDMs use the 300k training set SSL model at 1k epochs) is 
-```
-s3://fairusersglobal/users/AROAZVFNDK3MPX5WVK24S:caseymeehan/h1/checkpoint/caseymeehan/experiments/rcdm_2/vicreg/rcdm_vicreg_1000ep_300pc_A/model600000.pt
-```
