@@ -1,0 +1,42 @@
+data:
+  in_memory: 1
+  num_workers: 10
+attack:
+  k: 20 
+  k_attk: 20
+dist:
+  world_size: 8
+  nodes: 1 
+lr:
+  lr: 1.7
+  lr_schedule_type: cyclic
+model:
+  arch: resnet101
+  mlp: "8192-8192-8192"
+resolution:
+  end_ramp: 85
+  max_res: 192
+  min_res: 160
+  start_ramp: 70
+vicreg: 
+  sim_coeff: 25
+  std_coeff: 25
+  cov_coeff: 1  
+training:
+  loss: "vicreg"
+  batch_size: 128
+  bn_wd: 0
+  distributed: 1
+  epochs: 1000
+  label_smoothing: 0
+  momentum: 0.9
+  optimizer: lars
+  weight_decay: 1e-6
+  base_lr: 0.2
+  eval_freq: 50
+validation:
+  lr_tta: False
+  resolution: 256
+logging: 
+  checkpoint_freq: 5
+  snapshot_freq: 50
