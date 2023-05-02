@@ -2,6 +2,8 @@
 
 ![DejaVuMainFigure](images/FigureDejaVuGithub.jpg)
 
+This is the codebase for [Do SSL Models Have Déjà Vu? A Case of Unintended Memorization in Self-supervised Learning](https://arxiv.org/abs/2304.13850)
+
 ## Conda Environments
 
 To reproduce the experiments in the paper, you can create a new conda environment using the following command:
@@ -202,5 +204,17 @@ This will train on the public set an RCDM model that use the representation lear
 
 Then, you can use the [notebook](visualization_RCDM.ipynb) to see an example on how to use the trained RCDM to reconstruct images given a patch.
 
-## License
+# Cite the paper
+```
+@misc{meehan2023ssl,
+      title={Do SSL Models Have D\'ej\`a Vu? A Case of Unintended Memorization in Self-supervised Learning}, 
+      author={Casey Meehan and Florian Bordes and Pascal Vincent and Kamalika Chaudhuri and Chuan Guo},
+      year={2023},
+      eprint={2304.13850},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+
+# License
 This code is licensed under CC-BY-NC.
